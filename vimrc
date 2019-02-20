@@ -39,6 +39,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'Quramy/tsuquyomi'
   " Colorschemes below this line...
   Plug 'NLKNguyen/papercolor-theme'
+  " vim wrapper for running tests
+  Plug 'janko-m/vim-test'
+  " asynchronously run programs.
+  Plug 'neomake/neomake'
 call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
@@ -109,6 +113,7 @@ set notimeout ttimeout ttimeoutlen=200
 " Auto refresh file when changes detected (e.g. on build, file might change
 " while you have it open. Saves you having to type :e)
 set autoread
+au FocusGained * :checktime
 
 "------------------------------------------------------------
 " Indentation options
@@ -240,3 +245,19 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " TYPESCRIPT HINTS (tsuquyomi plugin)
 "
 autocmd FileType typescript nmap <buffer> <Leader>l : <C-u>echo tsuquyomi#hint()<CR>
+
+"-------------------------------------------------------
+" VIM TEST MAPPINGS
+" (e.g. press t then hold ctrl followed by n)
+"
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+" The built-in mapping for exiting terminal insert mode in neovim is CTRL-\ CTRL-n,
+" which is difficult to press, so map it to CTRL-o
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+"-------------------------------------------------------
