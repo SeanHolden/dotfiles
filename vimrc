@@ -33,11 +33,11 @@ call plug#begin('~/.vim/plugged')
   " React JSX syntax highlighting and indenting
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
-  " just syntax highlighting plugins below this line...
+  " Syntax highlighting plugin
   Plug 'leafgarland/typescript-vim'
   " Typescript completion and compile errors
   Plug 'Quramy/tsuquyomi'
-  " Colorschemes below this line...
+  " Colorscheme
   Plug 'NLKNguyen/papercolor-theme'
   " vim wrapper for running tests
   Plug 'janko-m/vim-test'
@@ -155,8 +155,8 @@ map <Leader>t :tab sp<CR>
 " remap escape key with jj only when in insert mode
 imap jj <esc>
 
-" copy current path with rspec command
-" map <Leader>y :let @+ = \"bundle exec rspec \" . expand(\"%\")<CR>
+" quicker saving with space followed by ;
+nnoremap <Space>; :w<CR>
 
 "-----------------------------------------------------------
 " NERDTREE
