@@ -41,6 +41,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'NLKNguyen/papercolor-theme'
   " vim wrapper for running tests
   Plug 'janko-m/vim-test'
+  " Go language support for Vim
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " autocomplete (neovim only)
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " autocomplete for Go specifically (neovim only)
+  Plug 'zchee/deoplete-go'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
@@ -260,4 +266,63 @@ nmap <silent> t<C-g> :TestVisit<CR>
 if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" VIM-GO SETTINGS
+"
+let g:go_fmt_command = "goimports"
+let g:go_auto_sameids = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" ctrl g => list all declarations in current file
+nmap <C-g> :GoDecls<cr>
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" DEOPLETE SETTINGS
+"
+let g:python2_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:deoplete#enable_at_startup = 1
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" DEOPLETE GO SETTINGS
+"
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" NEOMAKE SETTINGS
+"
+autocmd BufWritePost * Neomake
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_gometalinter_maker = {
+  \ 'args': [
+  \   '--tests',
+  \   '--enable-gc',
+  \   '--concurrency=3',
+  \   '--fast',
+  \   '-D', 'aligncheck',
+  \   '-D', 'dupl',
+  \   '-D', 'gocyclo',
+  \   '-D', 'gotype',
+  \   '-E', 'errcheck',
+  \   '-E', 'misspell',
+  \   '-E', 'unused',
+  \   '%:p:h',
+  \ ],
+  \ 'append_file': 0,
+  \ 'errorformat':
+  \   '%E%f:%l:%c:%trror: %m,' .
+  \   '%W%f:%l:%c:%tarning: %m,' .
+  \   '%E%f:%l::%trror: %m,' .
+  \   '%W%f:%l::%tarning: %m'
+  \ }
 "-------------------------------------------------------
