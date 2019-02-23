@@ -1,3 +1,11 @@
+" Requirements:
+" neovim
+" Python 3 for deoplete
+" pynvim (neovim python client) for deoplete https://github.com/neovim/pynvim
+" tern (install globally) for JS autocomplete https://www.npmjs.com/package/tern
+" vim-plug (neovim) to run :PlugInstall https://github.com/junegunn/vim-plug
+" Once all the above is installed, open neovim and run :PlugInstall
+"
 "------------------------------------------------------------
 " Features
 "
@@ -43,10 +51,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'janko-m/vim-test'
   " Go language support for Vim
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  " autocomplete (neovim only)
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " autocomplete for Go specifically (neovim only)
-  Plug 'zchee/deoplete-go'
+  if has("nvim")
+    " autocomplete (neovim only)
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " autocomplete for Go specifically (neovim only)
+    Plug 'zchee/deoplete-go'
+    " autocomplete for JS (requires ternjs installed globally)
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  endif
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
