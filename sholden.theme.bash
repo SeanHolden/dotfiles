@@ -28,7 +28,7 @@ __program_is_installed() {
 
 __node_version_prompt() {
   if [ $(__program_is_installed node) == 1 ]; then
-    echo 👾$(node -v)
+    echo "|👾$(node -v)|"
   fi
 }
 
