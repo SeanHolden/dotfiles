@@ -61,6 +61,8 @@ call plug#begin('~/.vim/plugged')
   endif
   " Tagbar (works with ctags)
   Plug 'majutsushi/tagbar'
+  " Git plugin. Adds things like :Gblame, :Gsplit, :Gstatus, :Gcommit, :Gdiff
+  Plug 'tpope/vim-fugitive'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
