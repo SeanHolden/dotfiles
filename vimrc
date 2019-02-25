@@ -295,6 +295,7 @@ endif
 let g:go_fmt_command = "goimports"
 let g:go_auto_sameids = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_def_mode = 'godef' " default is 'guru'
 " ctrl g => list all declarations in current file
 nmap <C-g> :GoDecls<cr>
 "-------------------------------------------------------
