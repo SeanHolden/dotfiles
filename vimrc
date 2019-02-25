@@ -59,6 +59,8 @@ call plug#begin('~/.vim/plugged')
     " autocomplete for JS (requires ternjs installed globally)
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   endif
+  " Tagbar (works with ctags)
+  Plug 'majutsushi/tagbar'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
