@@ -24,4 +24,5 @@ run `:checkhealth` to ensure everything is configured correctly.
 can check if python is installed with neovim by running: `:echo has("python")`.
 1 is true, 0 is false.
 
-ctags taken from https://github.com/romainl/ctags-patterns-for-javascript
+Use universal ctags instead of exuberant ctags.
+ctags config taken from https://github.com/romainl/ctags-patterns-for-javascript
