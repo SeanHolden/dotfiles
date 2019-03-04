@@ -65,6 +65,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   " Auto real-time linting
   Plug 'w0rp/ale'
+  " Statusbar/tabline at bottom of editor
+  Plug 'vim-airline/vim-airline'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
