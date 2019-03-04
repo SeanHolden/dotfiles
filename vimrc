@@ -63,6 +63,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'majutsushi/tagbar'
   " Git plugin. Adds things like :Gblame, :Gsplit, :Gstatus, :Gcommit, :Gdiff
   Plug 'tpope/vim-fugitive'
+  " Auto real-time linting
+  Plug 'w0rp/ale'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
@@ -192,7 +194,7 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 "-----------------------------------------------------------
 " TAGBAR (toggle with ctrl+m)
 "
-map <C-k> :TagbarToggle<CR>
+map <C-b> :TagbarToggle<CR>
 "----------------------------------------------------------
 "CTRL-P
 "
@@ -313,6 +315,32 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#pointer = 1
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" ALE SETTINGS
+"
+" g: is for global, b: is for buffer
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+nmap <silent> <C-k> :ALEPrevious<CR>
+nmap <silent> <C-j> :ALENext<CR>
+let g:ale_linter_aliases = {
+\   'jsx': ['css', 'javascript']
+\}
+let g:ale_linters = {
+\   'jsx': ['stylelint', 'eslint'],
+\   'javascript': ['stylelint', 'eslint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'stylelint'],
+\}
+" Do not lint or fix minified files.
+let g:ale_pattern_options = {
+\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\}
 "-------------------------------------------------------
 
 "-------------------------------------------------------
