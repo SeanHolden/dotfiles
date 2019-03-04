@@ -192,8 +192,7 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 "-----------------------------------------------------------
 " TAGBAR (toggle with ctrl+m)
 "
-map <C-m> :TagbarToggle<CR>
-
+map <C-k> :TagbarToggle<CR>
 "----------------------------------------------------------
 "CTRL-P
 "
