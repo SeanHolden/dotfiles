@@ -45,8 +45,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim'
   " Typescript completion and compile errors
   Plug 'Quramy/tsuquyomi'
-  " Colorscheme
+  " Colorschemes
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'srcery-colors/srcery-vim'
   " vim wrapper for running tests
   Plug 'janko-m/vim-test'
   " Go language support for Vim
@@ -154,7 +155,8 @@ set expandtab
 set t_Co=256
 syntax on
 set background=dark
-colorscheme PaperColor
+"colorscheme PaperColor
+colorscheme srcery
 
 "------------------------------------------------------------
 " Useful mappings
