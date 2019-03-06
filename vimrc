@@ -68,6 +68,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale'
   " Statusbar/tabline at bottom of editor
   Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   " asynchronously run programs.
   Plug 'neomake/neomake'
 call plug#end()
@@ -155,8 +156,8 @@ set expandtab
 set t_Co=256
 syntax on
 set background=dark
-"colorscheme PaperColor
-colorscheme srcery
+colorscheme PaperColor
+" colorscheme srcery
 
 "------------------------------------------------------------
 " Useful mappings
@@ -345,6 +346,12 @@ let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
 \}
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" AIRLINE SETTINGS
+"
+let g:airline_theme='papercolor'
 "-------------------------------------------------------
 
 "-------------------------------------------------------
