@@ -335,11 +335,11 @@ let g:ale_linter_aliases = {
 \   'jsx': ['css', 'javascript']
 \}
 let g:ale_linters = {
-\   'jsx': ['stylelint', 'eslint'],
-\   'javascript': ['stylelint', 'eslint'],
+\   'jsx': ['eslint'],
+\   'javascript': ['eslint'],
 \}
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'stylelint'],
+\   'javascript': ['eslint'],
 \}
 " Do not lint or fix minified files.
 let g:ale_pattern_options = {
@@ -385,4 +385,13 @@ let g:neomake_go_gometalinter_maker = {
   \   '%E%f:%l::%trror: %m,' .
   \   '%W%f:%l::%tarning: %m'
   \ }
+"-------------------------------------------------------
+
+"-------------------------------------------------------
+" PROJECT SPECIFIC VIMRC SETTINGS (Keep this at bottom of this file)
+"
+" (just create .nvimrc (.vimrc for standard vim) in root of project)
+set exrc
+" Disable unsafe commands in your project-specific .nvimrc files
+set secure
 "-------------------------------------------------------
