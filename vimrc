@@ -69,8 +69,6 @@ call plug#begin('~/.vim/plugged')
   " Statusbar/tabline at bottom of editor
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " asynchronously run programs.
-  Plug 'neomake/neomake'
 call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
@@ -319,7 +317,6 @@ let g:deoplete#sources#go#pointer = 1
 " ALE SETTINGS
 "
 " g: is for global, b: is for buffer
-let g:ale_fix_on_save = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 nmap <silent> <C-k> :ALEPrevious<CR>
@@ -327,57 +324,31 @@ nmap <silent> <C-j> :ALENext<CR>
 let g:ale_linter_aliases = {
 \   'jsx': ['css', 'javascript']
 \}
-let g:ale_linters = {
-\   'jsx': ['eslint'],
-\   'javascript': ['eslint'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+
 " Do not lint or fix minified files.
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
 \}
+let g:ale_fix_on_save = 1
+
+" Put the following in project specific .nvimrc files
+" If you only want specific linters to run.
+" let g:ale_linters = {
+" \   'jsx': ['eslint', 'styled', 'standard', 'prettier'],
+" \   'javascript': ['eslint', 'styled', 'standard', 'prettier'],
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint', 'styled', 'standard', 'prettier'],
+" \}
+" let g:ale_linters_explicit = 1
+
 "-------------------------------------------------------
 
 "-------------------------------------------------------
 " AIRLINE SETTINGS
 "
 let g:airline_theme='papercolor'
-"-------------------------------------------------------
-
-"-------------------------------------------------------
-" NEOMAKE SETTINGS
-"
-autocmd BufWritePost * Neomake
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
-let g:neomake_go_gometalinter_maker = {
-  \ 'args': [
-  \   '--tests',
-  \   '--enable-gc',
-  \   '--concurrency=3',
-  \   '--fast',
-  \   '-D', 'aligncheck',
-  \   '-D', 'dupl',
-  \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
-  \   '-E', 'errcheck',
-  \   '-E', 'misspell',
-  \   '-E', 'unused',
-  \   '%:p:h',
-  \ ],
-  \ 'append_file': 0,
-  \ 'errorformat':
-  \   '%E%f:%l:%c:%trror: %m,' .
-  \   '%W%f:%l:%c:%tarning: %m,' .
-  \   '%E%f:%l::%trror: %m,' .
-  \   '%W%f:%l::%tarning: %m'
-  \ }
 "-------------------------------------------------------
 
 "-------------------------------------------------------
