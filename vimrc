@@ -217,7 +217,7 @@ set nobackup
 "-------------------------------------------------------
 " RELATIVE LINE NUMBERS (BOTH == HYBRID)
 "
-set relativenumber
+" set relativenumber
 set number
 
 "-------------------------------------------------------
