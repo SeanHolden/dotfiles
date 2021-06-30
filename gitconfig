@@ -1,0 +1,8 @@
+[user]
+	name = Sean Holden
+        username = seanholden
+	email = <PRIMARY GITHUB EMAIL>
+[github]
+        user = seanholden
+[url "git@github.com:"]
+	insteadOf = https://github.com/
